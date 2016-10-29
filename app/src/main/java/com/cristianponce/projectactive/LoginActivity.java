@@ -16,7 +16,6 @@ import butterknife.ButterKnife;
 import butterknife.BindView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,9 +35,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_login) Button _loginButton;
+    @BindView(R.id.email_sign_in_button) Button emailSignInButton;
     @BindView(R.id.link_signup) TextView _signupLink;
-    @BindView(R.id.sign_in_button) SignInButton signInButton;
+    @BindView(R.id.google_sign_in_button) SignInButton googleSignInButton;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,17 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        signInButton.setSize(SignInButton.SIZE_WIDE);
-        signInButton.setScopes(gso.getScopeArray());
+        googleSignInButton.setSize(SignInButton.SIZE_WIDE);
+        googleSignInButton.setScopes(gso.getScopeArray());
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
 
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        emailSignInButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        _loginButton.setEnabled(false);
+        emailSignInButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
@@ -144,13 +144,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
+        emailSignInButton.setEnabled(true);
         finish();
     }
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-        _loginButton.setEnabled(true);
+        emailSignInButton.setEnabled(true);
     }
 
     public boolean validate() {
