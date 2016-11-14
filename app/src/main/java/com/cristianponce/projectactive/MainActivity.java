@@ -2,8 +2,6 @@ package com.cristianponce.projectactive;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -14,33 +12,39 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import static android.R.attr.key;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MainActivity";
+
+    private String userName;
+    private String photoURL;
+    public static final String ANONYMOUS = "anonymous";
+
     private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private FirebaseUser user;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
     private PackageInfo packageInfo;
+
+    @BindView(R.id.profile_name) TextView nameText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         //FACEBOOK
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity
                 }
                 else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
             }
         };
@@ -65,10 +71,18 @@ public class MainActivity extends AppCompatActivity
         if(user == null){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
+            return;
         }
         else
         {
+            userName = user.getDisplayName();
+            if(user.getPhotoUrl() != null){
+                photoURL = user.getPhotoUrl().toString();
+            }
             Log.d(TAG, "USER IS SIGNED IN: " + user.getEmail());
+
+            nameText.setText(userName + ": " + user.getEmail());
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

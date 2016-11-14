@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#272b33</color>
-    <color name="colorPrimaryDark">#20242a</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#F44336</color>
 
+    <color name="darkBack">#303030</color>
+    <color name="darkCard">#424242</color>
     <color name="colorAccentSecondary">#2b313a</color>
 
 
@@ -21,3 +23,5 @@
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
 </resources>
+    <!-- primary dark #20242a -->
+    <!-- primary dark #272b33 -->
