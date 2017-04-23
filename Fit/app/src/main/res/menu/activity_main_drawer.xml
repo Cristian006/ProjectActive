@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Profile" />
+        <item
+            android:id="@+id/social"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Social" />
+        <item
+            android:id="@+id/workouts"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Workouts" />
+        <item
+            android:id="@+id/meals"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Meals" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Settings" />
+    </group>
+
+    <item android:title="Tools">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Calculators" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Calorie Counter" />
+        </menu>
+    </item>
+</menu>
