@@ -8,4 +8,8 @@ public class User {
     String username;
     String firstName;
     String lastName;
+
+    public User(){
+        //empty constructor
+    }
 }

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "239950280453",
+    "firebase_url": "https://project-fit-9efdf.firebaseio.com",
+    "project_id": "project-fit-9efdf",
+    "storage_bucket": "project-fit-9efdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239950280453:android:67a569ad5348f928",
+        "android_client_info": {
+          "package_name": "ponce.cristian.fit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239950280453-omkvmt463oid6tsmeh3m5h9smvpq9f90.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ponce.cristian.fit",
+            "certificate_hash": "5aa3316a6248939bb351814d23eb9c002a04315a"
+          }
+        },
+        {
+          "client_id": "239950280453-d9q69r5e7eqo1d9q8dplm50i2v8guu07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwGOUPspHWQQ92jiqwNFQtEhGnw7z876g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "239950280453-d9q69r5e7eqo1d9q8dplm50i2v8guu07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

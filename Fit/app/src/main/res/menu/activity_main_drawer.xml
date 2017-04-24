@@ -4,30 +4,46 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/profile"
             android:title="Profile" />
         <item
             android:id="@+id/social"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/social"
             android:title="Social" />
         <item
             android:id="@+id/workouts"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/weight"
             android:title="Workouts" />
         <item
             android:id="@+id/meals"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/meal"
             android:title="Meals" />
         <item
+            android:id="@+id/messages"
+            android:icon="@drawable/message"
+            android:title="Messages" />
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/meal"
+            android:title="Info" />
+        <item
             android:id="@+id/settings"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/settings"
             android:title="Settings" />
+        <item
+            android:id="@+id/send_feedback"
+            android:icon="@drawable/settings"
+            android:title="Send Feedback" />
+        <item
+            android:id="@+id/Help"
+            android:icon="@drawable/settings"
+            android:title="Help" />
     </group>
 
-    <item android:title="Tools">
+    <!--item android:title="Tools">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/calculator"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Calculators" />
             <item
@@ -35,5 +51,5 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Calorie Counter" />
         </menu>
-    </item>
+    </item-->
 </menu>
