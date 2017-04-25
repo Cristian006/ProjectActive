@@ -19,11 +19,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ponce.cristian.fit.R;
+import ponce.cristian.fit.app.Fragments.PostFragment;
 import ponce.cristian.fit.app.Fragments.Profile;
 import ponce.cristian.fit.app.Fragments.Social;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Social.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Social.OnFragmentInteractionListener, PostFragment.OnFragmentInteractionListener {
 
     DrawerLayout drawer;
 

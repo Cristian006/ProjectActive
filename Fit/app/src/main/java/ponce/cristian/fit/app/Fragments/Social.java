@@ -10,7 +10,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,9 +23,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ponce.cristian.fit.R;
-import ponce.cristian.fit.app.MainActivity;
-import ponce.cristian.fit.app.SectionsPagerAdapter;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -31,9 +31,7 @@ import ponce.cristian.fit.app.SectionsPagerAdapter;
  * Use the {@link Social#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Social extends Fragment {
-
-    private TextView mTextMessage;
+public class Social extends Fragment implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,27 +57,37 @@ public class Social extends Fragment {
         return fragment;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+        Class fragmentClass;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.navigation_profile:
-                    mTextMessage.setText("Profile");
-                    return true;
-            }
-            return false;
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                fragmentClass = PostFragment.class;
+                break;
+            case R.id.navigation_notifications:
+                fragmentClass = PostFragment.class;
+                break;
+            case R.id.navigation_profile:
+                fragmentClass = Profile.class;
+                break;
+            default:
+                return false;
         }
 
-    };
+
+        try{
+            fragment = (Fragment)fragmentClass.newInstance();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.social_fragment_container, fragment).commit();
+        return true;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,13 +106,14 @@ public class Social extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar snackbar = Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null);
+                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                snackbar.show();
             }
         });
-        mTextMessage = (TextView) getActivity().findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
