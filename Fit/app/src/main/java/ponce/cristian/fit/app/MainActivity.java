@@ -32,14 +32,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -106,13 +98,13 @@ public class MainActivity extends AppCompatActivity
         Class fragmentClass;
 
         switch (id){
-            case R.id.profile:
-                fragmentClass = Profile.class;
-                break;
-            case R.id.social:
+            case R.id.fit:
                 fragmentClass = Social.class;
                 break;
             case R.id.workouts:
+                fragmentClass = Profile.class;
+                break;
+            case R.id.meals:
                 fragmentClass = Profile.class;
                 break;
             default:

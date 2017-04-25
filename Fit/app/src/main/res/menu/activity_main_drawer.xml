@@ -3,16 +3,12 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/profile"
-            android:icon="@drawable/profile"
-            android:title="Profile" />
-        <item
-            android:id="@+id/social"
-            android:icon="@drawable/social"
-            android:title="Social" />
+            android:id="@+id/fit"
+            android:icon="@drawable/fire"
+            android:title="Fit" />
         <item
             android:id="@+id/workouts"
-            android:icon="@drawable/weight"
+            android:icon="@drawable/dumbbell"
             android:title="Workouts" />
         <item
             android:id="@+id/meals"
@@ -24,7 +20,7 @@
             android:title="Messages" />
         <item
             android:id="@+id/info"
-            android:icon="@drawable/meal"
+            android:icon="@drawable/human"
             android:title="Info" />
         <item
             android:id="@+id/settings"
@@ -32,11 +28,11 @@
             android:title="Settings" />
         <item
             android:id="@+id/send_feedback"
-            android:icon="@drawable/settings"
+            android:icon="@drawable/feedback"
             android:title="Send Feedback" />
         <item
-            android:id="@+id/Help"
-            android:icon="@drawable/settings"
+            android:id="@+id/help"
+            android:icon="@drawable/help"
             android:title="Help" />
     </group>
 
