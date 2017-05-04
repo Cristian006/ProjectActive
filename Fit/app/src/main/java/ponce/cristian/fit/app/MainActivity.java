@@ -19,14 +19,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ponce.cristian.fit.R;
+import ponce.cristian.fit.app.Fragments.NotificationsFragment;
 import ponce.cristian.fit.app.Fragments.PostFragment;
 import ponce.cristian.fit.app.Fragments.Profile;
 import ponce.cristian.fit.app.Fragments.Social;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Social.OnFragmentInteractionListener, PostFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Profile.OnFragmentInteractionListener, Social.OnFragmentInteractionListener, PostFragment.OnFragmentInteractionListener, NotificationsFragment.OnFragmentInteractionListener{
 
     DrawerLayout drawer;
+    //TODO: ADD SETTINGS TO CHOOSE WHICH VIEW TO OPEN UP TO
+
+    int previousID = R.id.navigation_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        onNavigationItemSelected(navigationView.getMenu().findItem(R.id.fit));
+        navigationView.setCheckedItem(R.id.fit);
     }
 
     public void setToolbar(Toolbar toolbar){
@@ -95,6 +101,16 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
+        if(previousID == id){
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        }
+        else{
+            previousID = id;
+        }
+
         Fragment fragment = null;
         Class fragmentClass;
 

@@ -67,7 +67,7 @@ public class Social extends Fragment implements BottomNavigationView.OnNavigatio
                 fragmentClass = PostFragment.class;
                 break;
             case R.id.navigation_notifications:
-                fragmentClass = PostFragment.class;
+                fragmentClass = NotificationsFragment.class;
                 break;
             case R.id.navigation_profile:
                 fragmentClass = Profile.class;
@@ -114,6 +114,8 @@ public class Social extends Fragment implements BottomNavigationView.OnNavigatio
         });
         BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+        onNavigationItemSelected(navigation.getMenu().findItem(R.id.navigation_home));
+        navigation.setSelectedItemId(R.id.navigation_home);
     }
 
     @Override

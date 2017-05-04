@@ -3,12 +3,15 @@ package ponce.cristian.fit.app.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import ponce.cristian.fit.R;
+import ponce.cristian.fit.app.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +32,7 @@ public class PostFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
+    Toolbar toolbar;
     public PostFragment() {
         // Required empty public constructor
     }
@@ -84,6 +87,14 @@ public class PostFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstance){
+        super.onActivityCreated(savedInstance);
+
+        toolbar = (Toolbar)getView().findViewById(R.id.toolbar);
+        ((MainActivity)getActivity()).setToolbar(toolbar);
     }
 
     @Override
